@@ -7,16 +7,9 @@ import { PokemonImage1, ImageCol, CustomRow, AbilityIconCol, MainContainer, Butt
 import Pokeball from '../image/pokeball.png'
 
 const FavoritePokemonContainer = (props) => {
-    const { pokemonimg, abilities, height, weight, name } = usePokemonDetail(props.pokemonurl)
-
-    function deleteFav(pokemonurl){
-        if(window.confirm('Are you sure want to remove this pokemon from your favorite list?')){
-            const old_fav = JSON.parse(localStorage.getItem('favorite'))
-            const index = old_fav.indexOf(pokemonurl)
-            old_fav.splice(index, 1)
-            localStorage.setItem('favorite', JSON.stringify(old_fav))
-        }
-    }
+    const { pokemonimg, abilities, height, weight, name } = usePokemonDetail(
+        props.pokemonurl
+      );
 
     return (
         <MainContainer>
@@ -42,7 +35,7 @@ const FavoritePokemonContainer = (props) => {
                     </CustomRow>
                 </Col>
                 <ButtonCol lg={1}>
-                    <Button onClick={() => deleteFav(props.pokemonurl)}>Delete</Button>
+                    <Button onClick={props.onDelete}>Delete</Button>
                 </ButtonCol>
             </Row>
         </MainContainer>

@@ -4,13 +4,17 @@ import FavoritePokemonContainer from './FavoritePokemonContainer'
 import { ModalContainer } from '../Item.style'
 
 const PopupModal = (props) => {
-    const [data, setData] = useState(JSON.parse(localStorage.getItem("favorite")));
-    
-    useEffect(() => {
-        if(data !== JSON.parse(localStorage.getItem('favorite'))){
-            setData(JSON.parse(localStorage.getItem('favorite')))
-        }
-    }, [data])
+    const [data, setData] = useState();
+
+useEffect(() => {
+  setData(JSON.parse(localStorage.getItem("favorite")));
+}, [props.show]);
+
+useEffect(() => {
+  if (data && data !== JSON.parse(localStorage.getItem("favorite"))) {
+    localStorage.setItem("favorite", JSON.stringify(data));
+  }
+}, [data]);
     
     return (
         <div>
@@ -28,7 +32,11 @@ const PopupModal = (props) => {
                 <Modal.Body>
                     {data ?
                         data.map(pokemonurl => (
-                            <FavoritePokemonContainer pokemonurl={pokemonurl}/>
+                            <FavoritePokemonContainer 
+                            pokemonurl={pokemonurl}
+                            onDelete={() =>
+                                setData((prev) => prev.filter((item) => item !== pokemonurl))
+                            }/>
                         )):
                         <p>Empty</p>
                     }
