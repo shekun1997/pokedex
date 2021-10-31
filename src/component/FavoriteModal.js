@@ -28,7 +28,7 @@ const PopupModal = (props) => {
                 <Modal.Body>
                     {data ?
                         data.map(pokemonurl => (
-                            <FavoritePokemonContainer pokemonurl={pokemonurl} onDelete={() => setData(prev => prev !== pokemonurl)}/>
+                            <FavoritePokemonContainer pokemonurl={pokemonurl}/>
                         )):
                         <p>Empty</p>
                     }
@@ -39,25 +39,3 @@ const PopupModal = (props) => {
 }
 
 export default PopupModal
-
-
-// const [data, setData] = useState();
-// useEffect(() => {
-    // setData(JSON.parse(localStorage.getItem('favorite')))
-// }, [])
-
-
-// const data = JSON.parse(localStorage.getItem('favorite'))
-
-// const [data, setData] = useState(JSON.parse(localStorage.getItem("favorite")));
-// 
-// 
-// useEffect(() => {
-//   if (data !== JSON.parse(localStorage.getItem("favorite"))) {
-    // localStorage.setItem("favourite", data)
-//   }
-// }, [data])
-// 
-// return (
-//   <div role="button" onClick={() => setData((prev) => prev.filter(item => item !== "PokemonToBeDeleted"))}>Delete</div>
-// )
