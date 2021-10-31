@@ -38,7 +38,7 @@ const Home = () => {
             </PokemonCol>
           ))
           :
-          <h2>nope</h2>
+          <h2>Loading...</h2>
         }
       </PokemonRow>
       <ButtonContainer>
