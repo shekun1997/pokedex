@@ -6,15 +6,15 @@ import { ModalContainer } from '../Item.style'
 const PopupModal = (props) => {
     const [data, setData] = useState();
 
-useEffect(() => {
-  setData(JSON.parse(localStorage.getItem("favorite")));
-}, [props.show]);
-
-useEffect(() => {
-  if (data && data !== JSON.parse(localStorage.getItem("favorite"))) {
-    localStorage.setItem("favorite", JSON.stringify(data));
-  }
-}, [data]);
+    useEffect(() => {
+      setData(JSON.parse(localStorage.getItem("favorite")));
+    }, [props.show]);
+    
+    useEffect(() => {
+      if (data && data !== JSON.parse(localStorage.getItem("favorite"))) {
+        localStorage.setItem("favorite", JSON.stringify(data));
+      }
+    }, [data]);
     
     return (
         <div>
